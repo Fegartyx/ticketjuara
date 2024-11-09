@@ -16,20 +16,23 @@ class FrontController extends Controller
         $this->frontService = $frontService;
     }
 
-    public function index() {
+    public function index()
+    {
         $data = $this->frontService->getFrontPageData();
-//        dd($data);
+        //        dd($data);
         return view('front.index', $data);
     }
 
     // Model binding
-    public function details(Ticket $ticket) {
-        dd($ticket);
+    public function details(Ticket $ticket)
+    {
+        // dd($ticket);
         return view('front.details', compact('ticket'));
     }
 
-    public function category(Category $category) {
-        dd($category);
+    public function category(Category $category)
+    {
+        // dd($category);
         return view('front.category', compact('category'));
     }
 }
