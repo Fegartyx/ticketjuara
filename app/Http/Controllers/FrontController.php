@@ -18,7 +18,7 @@ class FrontController extends Controller
 
     public function index() {
         $data = $this->frontService->getFrontPageData();
-        dd($data);
+//        dd($data);
         return view('front.index', $data);
     }
 
