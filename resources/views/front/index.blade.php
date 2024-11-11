@@ -62,7 +62,7 @@
                     <div class="swiper-wrapper">
                         @forelse ($categories as $category)
                             <div class="swiper-slide !w-fit">
-                                <a href="category.html" class="card">
+                                <a href="{{ route('front.category', $category->slug) }}" class="card">
                                     <div
                                         class="flex items-center w-fit rounded-full text-nowrap p-[14px_20px] gap-[10px] bg-[#F8F8F9]">
                                         <img src="{{ Storage::url($category->icon) }}" class="w-6 h-6" alt="icon">
@@ -81,7 +81,7 @@
                     <div class="swiper-wrapper">
                         @forelse ($sellers as $seller)
                             <div class="swiper-slide !w-fit">
-                                <a href="{{ route('front.seller', $seller->slug) }}" class="card">
+                                <a href="" class="card">
                                     <div
                                         class="relative flex items-end w-[170px] h-[200px] shrink-0 rounded-[30px] bg-[#D9D9D9] overflow-hidden">
                                         <img src="{{ Storage::url($seller->thumbnail) }}"
