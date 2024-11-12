@@ -10,6 +10,7 @@
         rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css" />
+    <title>Details</title>
 </head>
 
 <body>
@@ -141,7 +142,7 @@
                 <div class="w-full h-[200px] overflow-hidden">
                     <div id="embedded-map-display" class="w-full h-full">
                         <iframe class="w-full h-full" frameborder="0"
-                            src="https://www.google.com/maps/embed/v1/place?q={{ $ticket->address }}&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"></iframe>
+                            src="https://www.google.com/maps/embed/v1/place?q={{ $ticket->address }}&key={{ $googleMapsApiKey }}"></iframe>
                     </div>
                 </div>
                 <p class="text-sm leading-[28px]">{{ $ticket->address }}</p>
@@ -154,7 +155,7 @@
                 </p>
                 <p class="text-sm leading-[26px] text-[#70758F]">/person</p>
             </div>
-            <a href="booking.html">
+            <a href="{{route('front.booking', $ticket->slug)}}">
                 <div class="flex items-center p-1 pl-5 w-fit gap-4 rounded-full bg-[#13181D]">
                     <p class="font-bold text-white">Book Now</p>
                     <img src="{{ asset('assets/images/icons/coupon.svg') }}" class="w-[50px] h-[50px]"

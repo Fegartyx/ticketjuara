@@ -25,6 +25,7 @@ class CategoryResource extends Resource
             ->schema([
                 Forms\Components\TextInput::make('name')->required()->maxLength(255),
                 Forms\Components\FileUpload::make('icon')->image()->required(),
+                Forms\Components\FileUpload::make('icon_white')->image(),
             ]);
     }
 
@@ -34,6 +35,7 @@ class CategoryResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('name')->searchable(),
                 Tables\Columns\ImageColumn::make('icon')->circular(),
+                Tables\Columns\ImageColumn::make('icon_white')->circular(),
             ])
             ->filters([
                 //

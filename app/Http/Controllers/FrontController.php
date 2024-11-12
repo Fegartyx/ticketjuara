@@ -27,7 +27,8 @@ class FrontController extends Controller
     public function details(Ticket $ticket)
     {
         // dd($ticket);
-        return view('front.details', compact('ticket'));
+        $googleMapsApiKey = env('GOOGLE_MAPS_API_KEY');
+        return view('front.details', compact('ticket','googleMapsApiKey'));
     }
 
     public function category(Category $category)
