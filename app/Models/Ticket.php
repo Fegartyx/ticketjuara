@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 
@@ -38,6 +40,10 @@ class Ticket extends Model
     public function photos(): \Illuminate\Database\Eloquent\Relations\HasMany
     {
         return $this->hasMany(TicketPhoto::class, 'ticket_id', 'id');
+    }
+
+    public function haveBenefits(): BelongsToMany {
+        return $this->belongsToMany(Benefit::class, "ticket_have_many_benefits", "ticket_id", "benefit_id");
     }
 
     public function setNameAttribute($value) {

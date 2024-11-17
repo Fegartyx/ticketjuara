@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Seller;
 use App\Models\Ticket;
 use App\Services\FrontService;
 use Illuminate\Http\Request;
@@ -35,5 +36,11 @@ class FrontController extends Controller
     {
         // dd($category);
         return view('front.category', compact('category'));
+    }
+
+    public function seller(Seller $seller)
+    {
+//         dd($seller->tickets);
+        return view('front.seller', compact('seller'));
     }
 }

@@ -4,6 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\BookingTransactionResource\Pages;
 use App\Filament\Resources\BookingTransactionResource\RelationManagers;
+use App\Jobs\SendBookingApprovedEmail;
 use App\Models\BookingTransaction;
 use App\Models\Ticket;
 use Filament\Actions\ViewAction;
@@ -121,6 +122,10 @@ class BookingTransactionResource extends Resource
                     $record->update([
                         'is_paid' => true,
                     ]);
+                    $record->save();
+
+                    // Send email to customer
+                    SendBookingApprovedEmail::dispatch($record);
 
                     Notification::make()
                         ->title('Payment Approved')

@@ -47,6 +47,7 @@ class TicketResource extends Resource
                     ])->required(),
                     Forms\Components\Select::make('category_id')->relationship('category','name')->searchable()->preload()->required(),
                     Forms\Components\Select::make('seller_id')->relationship('seller','name')->searchable()->preload()->required(),
+                    Forms\Components\Select::make('haveBenefits')->relationship('haveBenefits','name')->multiple()->preload()->required(),
                     Forms\Components\TimePicker::make('open_time_at')->label('Open Time At')->required(),
                     Forms\Components\TimePicker::make('closed_time_at')->label('Close Time At')->required(),
                 ])

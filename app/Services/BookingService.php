@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Jobs\SendBookingConfirmedEmail;
 use App\Models\BookingTransaction;
 use App\Repositories\Contracts\IBookingRepository;
 use App\Repositories\Contracts\ITicketRepository;
@@ -81,8 +82,15 @@ class BookingService
             $newBooking = $this->bookingRepository->createBooking($validated);
 
             $bookingTransactionId = $newBooking->id;
+
+            // TODO: Send email to user
+            SendBookingConfirmedEmail::dispatch($newBooking);
         });
 
         return $bookingTransactionId;
+    }
+
+    public function checkBookingDetails(array $validated) {
+        return $this->bookingRepository->findByTrxIdAndPhoneNumber($validated['booking_trx_id'], $validated['phone_number']);
     }
 }

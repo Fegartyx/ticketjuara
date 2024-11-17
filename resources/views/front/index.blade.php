@@ -81,7 +81,7 @@
                     <div class="swiper-wrapper">
                         @forelse ($sellers as $seller)
                             <div class="swiper-slide !w-fit">
-                                <a href="" class="card">
+                                <a href="{{route('front.seller', $seller->slug)}}" class="card">
                                     <div
                                         class="relative flex items-end w-[170px] h-[200px] shrink-0 rounded-[30px] bg-[#D9D9D9] overflow-hidden">
                                         <img src="{{ Storage::url($seller->thumbnail) }}"
@@ -143,7 +143,7 @@
         <nav id="Bottom-Nav" class="fixed bottom-0 w-full max-w-[640px] bg-white px-4 py-5 z-30">
             <ul class="flex justify-evenly max-[400px]:justify-between">
                 <li class=" text-[#F97316]">
-                    <a href="index.html" class="menu">
+                    <a href="{{route('front.index')}}" class="menu">
                         <div class="group flex flex-col items-center text-center gap-[10px]">
                             <div class="w-6 h-6 flex shrink-0">
                                 <svg class="transition-all duration-300 group-hover:fill-[#F97316]  fill-current"
@@ -176,7 +176,7 @@
                     </a>
                 </li>
                 <li class=" text-[#13181D]">
-                    <a href="check-booking.html" class="menu">
+                    <a href="{{route('front.check_booking')}}" class="menu">
                         <div class="group flex flex-col items-center text-center gap-[10px]">
                             <div class="w-6 h-6 flex shrink-0">
                                 <svg class="transition-all duration-300 group-hover:fill-[#F97316]  fill-current"

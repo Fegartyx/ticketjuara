@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreBookingRequest;
+use App\Http\Requests\StoreCheckBookingRequest;
 use App\Http\Requests\StorePaymentRequest;
 use App\Models\BookingTransaction;
 use App\Models\Ticket;
@@ -26,7 +27,7 @@ class BookingController extends Controller
 
     public function bookingStore(Ticket $ticket, StoreBookingRequest $request) {
         $validated = $request->validated();
-        dd($validated);
+//        dd($validated);
 
         $totals = $this->bookingService->calculateTotals($ticket->id, $validated['total_participant']);
         $this->bookingService->storeBookingSession($ticket, $validated, $totals);
@@ -52,5 +53,20 @@ class BookingController extends Controller
 
     public function bookingFinished(BookingTransaction $bookingTransaction) {
         return view('front.booking_finished', compact('bookingTransaction'));
+    }
+
+    public function checkBooking() {
+        return view('front.check_booking');
+    }
+
+    public function checkBookingDetails(StoreCheckBookingRequest $request) {
+        $validated = $request->validated();
+        $booking = $this->bookingService->checkBookingDetails($validated);
+
+        if (!$booking) {
+            return redirect()->route('front.check_booking')->with('error', 'Booking not found');
+        }
+
+        return view('front.check_booking_details', compact('booking'));
     }
 }
