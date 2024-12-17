@@ -10,6 +10,6 @@ class BenefitRepository implements IBenefitRepository
 
     public function getAllBenefit(): \Illuminate\Database\Eloquent\Collection
     {
-        return Benefit::query()->latest()->get();
+        return Benefit::query()->with('tickets')->latest()->get();
     }
 }

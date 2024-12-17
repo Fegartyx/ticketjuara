@@ -9,6 +9,6 @@ class CategoryRepository implements ICategoryRepository
 {
     public function getAllCategories(): \Illuminate\Database\Eloquent\Collection
     {
-        return Category::query()->latest()->get();
+        return Category::query()->with('tickets')->latest()->get();
     }
 }

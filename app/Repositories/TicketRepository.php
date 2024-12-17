@@ -14,7 +14,7 @@ class TicketRepository implements \App\Repositories\Contracts\ITicketRepository
 
     public function getAllNewTickets(): \Illuminate\Database\Eloquent\Collection
     {
-        return Ticket::query()->latest()->get();
+        return Ticket::query()->with(['category','seller','photos','haveBenefits'])->latest()->get();
     }
 
     public function find($id)

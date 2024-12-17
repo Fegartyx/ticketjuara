@@ -11,12 +11,12 @@
         "codeat3/blade-google-material-design-icons": "^1.19",
         "codeat3/blade-grommet-icons": "^1.9",
         "filament/filament": "^3.2",
-        "itsgoingd/clockwork": "^5.2",
         "laravel/framework": "^11.9",
         "laravel/tinker": "^2.9",
         "troccoli/blade-health-icons": "^4.0"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "^3.14",
         "fakerphp/faker": "^1.23",
         "laravel/pint": "^1.13",
         "laravel/sail": "^1.26",

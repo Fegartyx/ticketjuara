@@ -10,6 +10,6 @@ class SellerRepository implements ISellerRepository
 
     public function getAllSellers(): \Illuminate\Database\Eloquent\Collection
     {
-        return Seller::query()->latest()->get();
+        return Seller::query()->with('tickets')->latest()->get();
     }
 }
